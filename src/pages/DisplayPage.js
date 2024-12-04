@@ -10,7 +10,7 @@ function DisplayPage() {
   const [price, setPrice] = useState(null);
   const [error, setError] = useState(null);
 
-  const API_KEY = "JEzvbAEpCWZxR8VL5Bk3MNeSNbogdf0p"; // Ben's API key
+  const API_KEY = "";
 
   useEffect(() => {
     const fetchStockPrice = async () => {
