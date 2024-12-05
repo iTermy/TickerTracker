@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import { restClient } from "@polygon.io/client-js";
-
+import TickerTrackerLogo from './TickerTrackerLogo.png';
 function DisplayPage() {
   const navigate = useNavigate();
   const location = useLocation();
@@ -10,7 +10,7 @@ function DisplayPage() {
   const [price, setPrice] = useState(null);
   const [error, setError] = useState(null);
 
-  const API_KEY = "";
+  const API_KEY = "EnBA5XKTWQYOUOHTufIe5nEjGAh52QKO";
 
   useEffect(() => {
     const fetchStockPrice = async () => {
@@ -35,20 +35,25 @@ function DisplayPage() {
 
   return (
     <div style={{ textAlign: "center", marginTop: "50px" }}>
-      <h1 style={{ fontSize: "48px", color: "green" }}>{ticker}</h1>
+       <img
+            src={TickerTrackerLogo}  // Use the imported image variable
+            alt="Ticker Tracker Logo"
+            style={{ width: '30%', height: '30%', objectFit: 'cover' }} // Adjusted size
+          />
+      <h1 style={{ fontSize: "48px", color: "#7200ff !important" }}>{ticker}</h1>
       {error ? (
         <p style={{ color: "red" }}>Error: {error}</p>
       ) : price !== null ? (
         <p style={{ fontSize: "24px" }}>Previous Close Price: ${price}</p>
       ) : (
-        <p style={{ fontSize: "24px" }}>Loading...</p>
+        <p style={{ fontSize: "24px", color: "#7200ff !important" }}>Loading...</p>
       )}
       <button
         onClick={() => navigate("/")}
         style={{
           padding: "10px 20px",
           fontSize: "16px",
-          backgroundColor: "blue",
+          backgroundColor: "#7200ff",
           color: "white",
           border: "none",
           cursor: "pointer",

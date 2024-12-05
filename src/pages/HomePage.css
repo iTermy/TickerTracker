@@ -1,0 +1,14 @@
+.home-container {
+    height: 100vh; 
+    display: flex;
+    background-color: black;
+    border-top: 400px solid black; 
+    border-bottom: 5px solid black; 
+    padding-bottom: 20px;
+    align-items: center;
+    flex-direction: column; 
+    color: white;
+    justify-content: center;
+    
+ 
+  }

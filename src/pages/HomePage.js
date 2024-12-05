@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import TickerTrackerLogo from './TickerTrackerLogo.png';
+import './HomePage.css';
 
 function HomePage() {
   const [ticker, setTicker] = useState("");
@@ -11,23 +13,10 @@ function HomePage() {
   };
 
   return (
-    <div style={{ textAlign: "center", marginTop: "50px" }}>
+    <div style={{ textAlign: "center", marginTop: "50px", backgroundColor: "white", color: "white", height: "100vh" }}>
       <div style={{ marginBottom: "20px" }}>
-        <div
-          style={{
-            width: "100px",
-            height: "100px",
-            backgroundColor: "blue",
-            borderRadius: "50%",
-            display: "inline-block",
-            textAlign: "center",
-            lineHeight: "100px",
-            color: "white",
-            fontWeight: "bold",
-          }}
-        >
-          Logo
-        </div>
+        <div>
+        <img src={TickerTrackerLogo} alt="Ticker Tracker Logo" style={{ width: '30%', height: '30%', objectFit: 'cover' }}/>       </div>
       </div>
       <form onSubmit={handleSubmit}>
         <input
@@ -43,7 +32,7 @@ function HomePage() {
             padding: "10px 20px",
             marginLeft: "10px",
             fontSize: "16px",
-            backgroundColor: "blue",
+            backgroundColor: "#7200ff",
             color: "white",
             border: "none",
             cursor: "pointer",
