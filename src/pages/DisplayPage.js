@@ -1,63 +1,73 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import { restClient } from "@polygon.io/client-js";
-import TickerTrackerLogo from './TickerTrackerLogo.png';
+import TickerTrackerLogo from "./TickerTrackerLogo.png";
+import "./DisplayPage.css";
+
 function DisplayPage() {
   const navigate = useNavigate();
   const location = useLocation();
   const { ticker } = location.state || { ticker: "" };
 
-  const [price, setPrice] = useState(null);
+  const [priceData, setPriceData] = useState(null);
   const [error, setError] = useState(null);
 
-  const API_KEY = ""; // Enter API Key
+  const API_KEY = "5aEkwn18xwkYWhQxG_dwsQp8K0jYH14K"; // Enter API Key
 
   useEffect(() => {
-    const fetchStockPrice = async () => {
+    const fetchStockData = async () => {
       const rest = restClient(API_KEY);
 
       try {
         const data = await rest.stocks.previousClose(ticker);
         if (data && data.results && data.results[0]) {
-          setPrice(data.results[0].c); // `c` is daily close price
-        } else {
+          const { o, c } = data.results[0]; // Daily open and close
+          const percentChange = ((c - o) / o) * 100;
+          setPriceData({ open: o, close: c, percentChange });
+        }
+        else {
           throw new Error("No data found for the given ticker.");
         }
-      } catch (error) {
+      }
+      catch (error) {
         setError(error.message);
       }
     };
 
     if (ticker) {
-      fetchStockPrice();
+      fetchStockData();
     }
   }, [ticker, API_KEY]);
 
   return (
-    <div style={{ textAlign: "center", marginTop: "50px" }}>
-       <img
-            src={TickerTrackerLogo}  // Use the imported image variable
-            alt="Ticker Tracker Logo"
-            style={{ width: '30%', height: '30%', objectFit: 'cover' }} // Adjusted size
-          />
-      <h1 style={{ fontSize: "48px", color: "#7200ff !important" }}>{ticker}</h1>
+    <div className="display-page">
+      <img
+        src={TickerTrackerLogo} // Use the imported image variable
+        alt="Ticker Tracker Logo"
+        className="logo"
+      />
+      <h1 className="ticker-name">{ticker}</h1>
       {error ? (
-        <p style={{ color: "red" }}>Error: {error}</p>
-      ) : price !== null ? (
-        <p style={{ fontSize: "24px" }}>Previous Close Price: ${price}</p>
+        <p className="error-message">Error: {error}</p>
+      ) : priceData ? (
+        <div>
+          <p className="stock-price">Open Price: ${priceData.open}</p>
+          <p className="stock-price">Close Price: ${priceData.close}</p>
+          <p
+            className="stock-price"
+            style={{
+              color: priceData.percentChange >= 0 ? "green" : "red",
+            }}
+          >
+            Percent Change: {priceData.percentChange.toFixed(2)}%
+          </p>
+        </div>
       ) : (
-        <p style={{ fontSize: "24px", color: "#7200ff !important" }}>Loading...</p>
+        <p className="loading">Loading...</p>
       )}
       <button
         onClick={() => navigate("/")}
-        style={{
-          padding: "10px 20px",
-          fontSize: "16px",
-          backgroundColor: "#7200ff",
-          color: "white",
-          border: "none",
-          cursor: "pointer",
-        }}
+        className="back-button"
       >
         Go Back
       </button>

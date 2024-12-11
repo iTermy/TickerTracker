@@ -13,33 +13,19 @@ function HomePage() {
   };
 
   return (
-    <div style={{ textAlign: "center", marginTop: "50px", backgroundColor: "white", color: "white", height: "100vh" }}>
-      <div style={{ marginBottom: "20px" }}>
-        <div>
-        <img src={TickerTrackerLogo} alt="Ticker Tracker Logo" style={{ width: '30%', height: '30%', objectFit: 'cover' }}/>       </div>
+    <div className="home-page">
+      <div className="logo-container">
+        <img src={TickerTrackerLogo} alt="Ticker Tracker Logo" className="logo" />
       </div>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} className="ticker-form">
         <input
           type="text"
           value={ticker}
-          onChange={(e) => setTicker(e.target.value)}
+          onChange={(e) => setTicker(e.target.value.toUpperCase())}
           placeholder="Enter Ticker"
-          style={{ padding: "10px", fontSize: "16px" }}
+          className="ticker-input"
         />
-        <button
-          type="submit"
-          style={{
-            padding: "10px 20px",
-            marginLeft: "10px",
-            fontSize: "16px",
-            backgroundColor: "#7200ff",
-            color: "white",
-            border: "none",
-            cursor: "pointer",
-          }}
-        >
-          Submit
-        </button>
+        <button type="submit" className="submit-button">Submit</button>
       </form>
     </div>
   );
