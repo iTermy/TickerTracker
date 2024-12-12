@@ -11,8 +11,8 @@
 }
 
 .logo {
-  width: 50%;
-  height: 50%;
+  width: 30%;
+  height: auto;
   object-fit: contain;
   margin-bottom: 10px; 
 }
