@@ -1,32 +1,101 @@
 .display-page {
   text-align: center;
-  margin-top: 50px;
+  padding: 10px 0;
   background-color: white;
-  color: black;
+  border: 2px solid black;
   height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
 }
 
 .logo {
-  width: 30%;
-  height: 30%;
-  object-fit: cover;
+  width: 50%;
+  height: 50%;
+  object-fit: contain;
+  margin-bottom: 10px; 
+}
+
+.header {
+  display: flex;
+  justify-content: center; 
+  align-items: center; 
+  gap: 8px; 
+  margin-bottom: 10px; 
 }
 
 .ticker-name {
-  font-size: 48px;
+  font-size: 40px;
   color: #7200ff;
+  margin: 0;
 }
 
-.stock-price, .loading, .error-message {
-  font-size: 24px;
-  margin: 20px 0;
+.add-watchlist-button {
+  padding: 4px 4px;
+  font-size: 6px;
+  background-color: whitesmoke;
+  color: white;
+  border: 2px solid black;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.add-watchlist-button:hover {
+  background-color: #0056b3;
+}
+
+.stock-price,
+.loading,
+.error-message {
+  font-size: 20px; 
+  margin: 10px 0; 
 }
 
 .back-button {
-  padding: 10px 20px;
-  font-size: 16px;
+  padding: 8px 16px; 
+  font-size: 14px;
   background-color: #7200ff;
   color: white;
   border: none;
+  border-radius: 4px;
   cursor: pointer;
+  margin-top: 20px;
+}
+.news-panel {
+  position: fixed;
+  top: 1px;
+  right: 1248px;
+  width: 250px;
+  height: 750px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  padding: 10px;
+  background-color: #f9f9f9;
+}
+
+.watchlist {
+  position: fixed;
+  top: 1px;
+  right: 0px;
+  width: 250px;
+  height: 750px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  padding: 10px;
+  background-color: #f9f9f9;
+  overflow-y: scroll
+}
+
+.watchlist-item {
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-bottom: 10px;
+  user-select: none;
+}
+
+.watchlist-item:hover {
+  background-color: #f0f0f0;
 }

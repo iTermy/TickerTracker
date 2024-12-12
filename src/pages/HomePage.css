@@ -36,3 +36,31 @@
   border: none;
   cursor: pointer;
 }
+
+.watchlist {
+  position: fixed;
+  top: 100px;
+  right: 20px;
+  width: 250px;
+  height: 400px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  padding: 10px;
+  background-color: #f9f9f9;
+  overflow-y: scroll;
+  color: #7200ff;
+}
+
+.watchlist-item {
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-bottom: 10px;
+  user-select: none;
+  color: blue
+}
+
+.watchlist-item:hover {
+  background-color: #f0f0f0;
+}

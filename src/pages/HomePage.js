@@ -1,15 +1,19 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import TickerTrackerLogo from './TickerTrackerLogo.png';
 import './HomePage.css';
+import { WatchlistContext } from "../App";
 
 function HomePage() {
   const [ticker, setTicker] = useState("");
   const navigate = useNavigate();
+  const { watchlist } = useContext(WatchlistContext);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    navigate("/display", { state: { ticker } });
+    if (ticker.trim() !== "") {
+      navigate("/display", { state: { ticker } });
+    }
   };
 
   return (
@@ -27,6 +31,20 @@ function HomePage() {
         />
         <button type="submit" className="submit-button">Submit</button>
       </form>
+      <div className="watchlist">
+        <h2>Watchlist</h2>
+        <div className="watchlist-items">
+          {watchlist.map((item) => (
+            <div
+              key={item.ticker}
+              className="watchlist-item"
+              onClick={() => navigate("/display", { state: { ticker: item.ticker } })}
+            >
+              <p>{item.ticker}</p>
+            </div>
+          ))}
+        </div>
+      </div>
     </div>
   );
 }
