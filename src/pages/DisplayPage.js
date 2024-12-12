@@ -16,7 +16,7 @@ function DisplayPage() {
   const [priceData, setPriceData] = useState(null);
   const [error, setError] = useState(null);
 
-  const API_KEY = "5aEkwn18xwkYWhQxG_dwsQp8K0jYH14K"; // API Key
+  const API_KEY = ""; // Removed API Key
 
   useEffect(() => {
     const fetchStockData = async () => {
