@@ -5,7 +5,7 @@ function NewsPage({ ticker }) {
   const [news, setNews] = useState([]);
   const [newsError, setNewsError] = useState(null);
 
-  const API_KEY = "EnBA5XKTWQYOUOHTufIe5nEjGAh52QKO"; 
+  const API_KEY = ""; // Removed API Key
   const API_URL = "https://api.polygon.io/v2/reference/news";
 
   useEffect(() => {
